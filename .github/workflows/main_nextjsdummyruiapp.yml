@@ -33,7 +33,7 @@ jobs:
           cp -R ./.next/static ./.next/standalone/.next/static
 
       - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: node-app
           path: ./.next/standalone
@@ -47,15 +47,15 @@ jobs:
 
     steps:
       - name: Download artifact from build job
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: node-app
 
       - name: 'Deploy to Azure Web App'
-        uses: azure/webapps-deploy@v2
+        uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
-          app-name: 'nextjsdummyruiapp'
+          app-name: 'linuxnextjsruidummy '
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_741A17788AED47018C9AFC32D5B98972 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_LINUXNEXTJSRUIDUMMY }}
           package: .
